@@ -40,13 +40,13 @@ add_executable(main main.cpp)
 target_include_directories(sourcefiles PUBLIC ${include_directorys})
 target_link_libraries(main sourcefiles)
 ################################################################################
-
-set (Sources ${source_directorys}/additionmock.cpp ${source_directorys}/math.cpp)
+# test build files
+set (Sources  ${source_directorys}/additionmock.cpp ${source_directorys}/math.cpp)
 add_library(math STATIC ${Sources})
 target_link_libraries(math gtest_main gmock_main)
 
-target_include_directories(math PRIVATE ${include_directorys} )
+target_include_directories(math PUBLIC ${include_directorys})
 
 add_executable(maintest maintest.cpp)
-target_include_directories(maintest PUBLIC ${include_directorys} ${PROJECT_SOURCE_DIR})
+target_include_directories(maintest PUBLIC ${PROJECT_SOURCE_DIR})
 target_link_libraries(maintest math gtest_main gmock_main)

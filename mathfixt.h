@@ -2,6 +2,7 @@
 #define MATHFIXT_H
 #include "math.h"
 #include "additionmock.h"
+#include <iostream>
 //defined the global pointer variable mockpointer to be available to all using classes 
 Addmock *mockpointer=NULL;
 //globtestvar definition with {}.if = used it is an asignation
@@ -19,11 +20,16 @@ class Mathtest :public ::testing::Test{
     public:
     virtual void SetUp() {
        mockpointer=new Addmock;
+       std::cout<<"Mathtest fixture called"<<std::endl;
 
     }
     virtual void TearDown() {
         delete mockpointer;
+        std::cout<<"Mathtest TearDown called"<<std::endl;
     }
+    virtual ~Mathtest(){
+        std::cout<<"Mathtest destructor called"<<std::endl;
+     }
 
 };
 #endif
