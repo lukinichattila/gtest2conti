@@ -10,6 +10,12 @@ TEST_F(Mathtest,additiontest){
     int result=operation ("Atti",1,2);
    EXPECT_EQ(3,result);
 };
+TEST_F(Mathtest,substtest){
+   EXPECT_CALL(*substrmockpointer, subtraction(_,_)).WillOnce(Return(10)); 
+    int result=minusoperation ("Atti",20,10);
+   EXPECT_EQ(10,result);
+};
+
 
 int main(int argc, char **argv){
     testing::InitGoogleTest(&argc, argv);
