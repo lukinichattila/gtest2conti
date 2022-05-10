@@ -35,13 +35,13 @@ set (source_directorys ${PROJECT_SOURCE_DIR}/src)
 
 
 
-add_library(sourcefiles ${source_directorys}/addition.cpp ${source_directorys}/math.cpp)
+add_library(sourcefiles ${source_directorys}/addition.cpp ${source_directorys}/math.cpp ${source_directorys}/subtraction.cpp)
 add_executable(main main.cpp)
 target_include_directories(sourcefiles PUBLIC ${include_directorys})
 target_link_libraries(main sourcefiles)
 ################################################################################
 # test build files
-set (Sources  ${source_directorys}/additionmock.cpp ${source_directorys}/math.cpp)
+set (Sources  ${source_directorys}/additionmock.cpp ${source_directorys}/subtractionmock.cpp ${source_directorys}/math.cpp )
 add_library(math STATIC ${Sources})
 target_link_libraries(math gtest_main gmock_main)
 

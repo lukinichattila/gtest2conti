@@ -2,9 +2,11 @@
 #define MATHFIXT_H
 #include "math.h"
 #include "additionmock.h"
+#include "subtractionmock.h"
 #include <iostream>
 //defined the global pointer variable mockpointer to be available to all using classes 
 Addmock *mockpointer=NULL;
+Substrmock *substrmockpointer=NULL;
 //globtestvar definition with {}.if = used it is an asignation
 int globtestvar{0};
 //namespace definitions for availability without typing whole syntax
@@ -20,11 +22,13 @@ class Mathtest :public ::testing::Test{
     public:
     virtual void SetUp() {
        mockpointer=new Addmock;
+       substrmockpointer= new Substrmock;
        std::cout<<"Mathtest fixture called"<<std::endl;
 
     }
     virtual void TearDown() {
         delete mockpointer;
+        delete substrmockpointer;
         std::cout<<"Mathtest TearDown called"<<std::endl;
     }
     virtual ~Mathtest(){
